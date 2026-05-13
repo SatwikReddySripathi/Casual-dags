@@ -1,0 +1,11 @@
+node_id,label,taxonomy,description
+teacher_clarity,Teacher Clarity,Intervention,"How clearly the tutor explains concepts and instructions (Hattie d~0.75)"
+feedback_quality,Feedback Quality,Intervention,"Specificity and usefulness of feedback (Hattie d~0.70; paper specific-vs-generic contrast)"
+scaffolding,Scaffolding,Intervention,"Stepwise support provided to the learner; granularity of hints"
+prior_achievement,Prior Achievement,Context,"Student baseline knowledge before interaction (paper Sec 1.2 context variable)"
+language_background,Language Background,Context,"Student language context affecting interpretation (paper Sec 1.2 context variable)"
+engagement_history,Engagement History,Context,"Historical participation and persistence (paper Sec 1.2 context variable)"
+student_confidence,Student Confidence,Diagnostic,"In-flow confidence signal during learning; aligns with GLP Y4 Uncertainty Calibration"
+error_rate,Error Rate,Diagnostic,"Frequency of incorrect attempts; aligns with GLP Y2 Error Trajectory Coherence"
+hint_dependency,Hint Dependency,Diagnostic,"How often the student relies on hints; aligns with GLP Y7 Scaffolding Response Curve"
+learning_outcome,Learning Outcome,Outcome,"Measured learning or transfer outcome; in paper Sec 2.3 this is a diagnostic serving as the inference target"

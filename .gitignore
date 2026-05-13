@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+.pytest_cache
+
+CLAUDE.md
+Casual KG Medhavi.pdf

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d2" for="edge" attr.name="sign" attr.type="string"/>
+<key id="d1" for="node" attr.name="role" attr.type="string"/>
+<key id="d0" for="node" attr.name="label" attr.type="string"/>
+<graph edgedefault="directed"><node id="teacher_clarity">
+  <data key="d0">Teacher
+Clarity</data>
+  <data key="d1">Intervention</data>
+</node>
+<node id="meeting_grade_level">
+  <data key="d0">Meeting
+Grade-Level
+Standards</data>
+  <data key="d1">Diagnostic (mediator)</data>
+</node>
+<node id="grade_retention">
+  <data key="d0">Grade
+Retention</data>
+  <data key="d1">Diagnostic (mediator)</data>
+</node>
+<node id="achievement">
+  <data key="d0">Achievement</data>
+  <data key="d1">Outcome</data>
+</node>
+<edge source="teacher_clarity" target="meeting_grade_level">
+  <data key="d2">+ improves</data>
+</edge>
+<edge source="meeting_grade_level" target="grade_retention">
+  <data key="d2">− reduces</data>
+</edge>
+<edge source="meeting_grade_level" target="achievement">
+  <data key="d2">+ improves</data>
+</edge>
+<edge source="grade_retention" target="achievement">
+  <data key="d2">− reduces (Hattie d≈−0.32)</data>
+</edge>
+</graph></graphml>

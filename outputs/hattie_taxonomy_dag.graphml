@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d2" for="node" attr.name="description" attr.type="string"/>
+<key id="d1" for="node" attr.name="taxonomy" attr.type="string"/>
+<key id="d0" for="node" attr.name="label" attr.type="string"/>
+<graph edgedefault="directed"><node id="teacher_clarity">
+  <data key="d0">Teacher Clarity</data>
+  <data key="d1">Intervention</data>
+  <data key="d2">How clearly the tutor explains concepts and instructions (Hattie d~0.75)</data>
+</node>
+<node id="feedback_quality">
+  <data key="d0">Feedback Quality</data>
+  <data key="d1">Intervention</data>
+  <data key="d2">Specificity and usefulness of feedback (Hattie d~0.70; paper specific-vs-generic contrast)</data>
+</node>
+<node id="scaffolding">
+  <data key="d0">Scaffolding</data>
+  <data key="d1">Intervention</data>
+  <data key="d2">Stepwise support provided to the learner; granularity of hints</data>
+</node>
+<node id="prior_achievement">
+  <data key="d0">Prior Achievement</data>
+  <data key="d1">Context</data>
+  <data key="d2">Student baseline knowledge before interaction (paper Sec 1.2 context variable)</data>
+</node>
+<node id="language_background">
+  <data key="d0">Language Background</data>
+  <data key="d1">Context</data>
+  <data key="d2">Student language context affecting interpretation (paper Sec 1.2 context variable)</data>
+</node>
+<node id="engagement_history">
+  <data key="d0">Engagement History</data>
+  <data key="d1">Context</data>
+  <data key="d2">Historical participation and persistence (paper Sec 1.2 context variable)</data>
+</node>
+<node id="student_confidence">
+  <data key="d0">Student Confidence</data>
+  <data key="d1">Diagnostic</data>
+  <data key="d2">In-flow confidence signal during learning; aligns with GLP Y4 Uncertainty Calibration</data>
+</node>
+<node id="error_rate">
+  <data key="d0">Error Rate</data>
+  <data key="d1">Diagnostic</data>
+  <data key="d2">Frequency of incorrect attempts; aligns with GLP Y2 Error Trajectory Coherence</data>
+</node>
+<node id="hint_dependency">
+  <data key="d0">Hint Dependency</data>
+  <data key="d1">Diagnostic</data>
+  <data key="d2">How often the student relies on hints; aligns with GLP Y7 Scaffolding Response Curve</data>
+</node>
+<node id="learning_outcome">
+  <data key="d0">Learning Outcome</data>
+  <data key="d1">Outcome</data>
+  <data key="d2">Measured learning or transfer outcome; in paper Sec 2.3 this is a diagnostic serving as the inference target</data>
+</node>
+<edge source="teacher_clarity" target="student_confidence"/>
+<edge source="teacher_clarity" target="error_rate"/>
+<edge source="feedback_quality" target="error_rate"/>
+<edge source="feedback_quality" target="learning_outcome"/>
+<edge source="scaffolding" target="hint_dependency"/>
+<edge source="scaffolding" target="learning_outcome"/>
+<edge source="prior_achievement" target="student_confidence"/>
+<edge source="prior_achievement" target="error_rate"/>
+<edge source="prior_achievement" target="learning_outcome"/>
+<edge source="language_background" target="student_confidence"/>
+<edge source="language_background" target="error_rate"/>
+<edge source="engagement_history" target="hint_dependency"/>
+<edge source="engagement_history" target="learning_outcome"/>
+<edge source="student_confidence" target="learning_outcome"/>
+<edge source="error_rate" target="learning_outcome"/>
+<edge source="hint_dependency" target="learning_outcome"/>
+</graph></graphml>
