@@ -27,17 +27,33 @@ source .venv/bin/activate   # macOS/Linux
 pip install -r requirements.txt
 ```
 
-## Run Adherence Baseline
+## Run Adherence Baseline (V1)
 
 ```bash
 python src/adherence/evaluate.py
 ```
 
-## Render DAG
+## Render DAG figures (V1)
 
 ```bash
 python src/dag/render_dag.py
 ```
+
+## Run classifier-error sensitivity analysis (V1.5)
+
+```bash
+python src/sensitivity/run_analysis.py
+```
+
+Produces a curve showing how classifier error rate propagates into causal-estimate bias — directly addresses the reviewer's deeper concern about classifier error propagation.
+
+## Compute interrater reliability when a second rater exists (V1.5)
+
+```bash
+python src/adherence/interrater.py
+```
+
+Will print the second-rater workflow if `data/manual_labels_rater2.csv` is missing; otherwise computes Cohen's κ overall and per-policy.
 
 ## Run Tests
 
@@ -45,17 +61,28 @@ python src/dag/render_dag.py
 pytest
 ```
 
+28 tests cover classifier logic, DAG construction, sensitivity simulation, and κ computation.
+
 ## Outputs
 
 Generated files appear in `outputs/`:
 
+**Adherence baseline (V1)**
 - `adherence_baseline_report.md`
 - `adherence_predictions.csv`
 - `adherence_confusion_matrix.png`
-- `hattie_taxonomy_dag.png` — broader Hattie variable taxonomy DAG
-- `hattie_taxonomy_dag.graphml`
-- `clarity_retention_dag.png` — paper §2.2 mediation DAG (replaces ASCII)
-- `clarity_retention_dag.graphml`
+
+**DAG figures (V1, with V1.5 SVG additions)**
+- `hattie_taxonomy_dag.png` / `.svg` / `.graphml` — broader taxonomy DAG
+- `clarity_retention_dag.png` / `.svg` / `.graphml` — paper §2.2 mediation DAG
+
+**Sensitivity analysis (V1.5)**
+- `sensitivity_curve.png`
+- `sensitivity_predictions.csv`
+- `sensitivity_report.md`
+
+**Interrater (V1.5, produced when rater-2 data exists)**
+- `interrater_report.md`
 
 ## Scope
 

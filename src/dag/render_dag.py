@@ -39,8 +39,10 @@ OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
 VARIABLES_CSV = DATA_DIR / "hattie_variable_subset.csv"
 TAXONOMY_PNG = OUTPUT_DIR / "hattie_taxonomy_dag.png"
+TAXONOMY_SVG = OUTPUT_DIR / "hattie_taxonomy_dag.svg"
 TAXONOMY_GRAPHML = OUTPUT_DIR / "hattie_taxonomy_dag.graphml"
 MEDIATION_PNG = OUTPUT_DIR / "clarity_retention_dag.png"
+MEDIATION_SVG = OUTPUT_DIR / "clarity_retention_dag.svg"
 MEDIATION_GRAPHML = OUTPUT_DIR / "clarity_retention_dag.graphml"
 
 # -----------------------------------------------------------------------------
@@ -88,7 +90,12 @@ def _edge_style_key(graph: nx.DiGraph, src: str) -> str:
     return graph.nodes[src]["taxonomy"]
 
 
-def render_taxonomy_dag(graph: nx.DiGraph, png_path: Path, graphml_path: Path) -> None:
+def render_taxonomy_dag(
+    graph: nx.DiGraph,
+    png_path: Path,
+    graphml_path: Path,
+    svg_path: Path | None = None,
+) -> None:
     png_path.parent.mkdir(parents=True, exist_ok=True)
     graphml_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -179,6 +186,8 @@ def render_taxonomy_dag(graph: nx.DiGraph, png_path: Path, graphml_path: Path) -
     ax.margins(0.12)
     fig.tight_layout()
     fig.savefig(png_path, dpi=200, bbox_inches="tight")
+    if svg_path is not None:
+        fig.savefig(svg_path, format="svg", bbox_inches="tight")
     plt.close(fig)
 
     nx.write_graphml(graph, graphml_path)
@@ -236,7 +245,11 @@ def _build_mediation_graph() -> nx.DiGraph:
     return g
 
 
-def render_mediation_dag(png_path: Path, graphml_path: Path) -> None:
+def render_mediation_dag(
+    png_path: Path,
+    graphml_path: Path,
+    svg_path: Path | None = None,
+) -> None:
     png_path.parent.mkdir(parents=True, exist_ok=True)
     graphml_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -302,6 +315,8 @@ def render_mediation_dag(png_path: Path, graphml_path: Path) -> None:
     ax.margins(0.14)
     fig.tight_layout()
     fig.savefig(png_path, dpi=200, bbox_inches="tight")
+    if svg_path is not None:
+        fig.savefig(svg_path, format="svg", bbox_inches="tight")
     plt.close(fig)
 
     nx.write_graphml(graph, graphml_path)
@@ -314,13 +329,15 @@ def render_mediation_dag(png_path: Path, graphml_path: Path) -> None:
 
 def main() -> None:
     taxonomy_graph = build_graph(str(VARIABLES_CSV))
-    render_taxonomy_dag(taxonomy_graph, TAXONOMY_PNG, TAXONOMY_GRAPHML)
-    print(f"Wrote taxonomy DAG:   {TAXONOMY_PNG}")
-    print(f"Wrote taxonomy GraphML: {TAXONOMY_GRAPHML}")
+    render_taxonomy_dag(taxonomy_graph, TAXONOMY_PNG, TAXONOMY_GRAPHML, TAXONOMY_SVG)
+    print(f"Wrote taxonomy DAG (PNG): {TAXONOMY_PNG}")
+    print(f"Wrote taxonomy DAG (SVG): {TAXONOMY_SVG}")
+    print(f"Wrote taxonomy GraphML:   {TAXONOMY_GRAPHML}")
 
-    render_mediation_dag(MEDIATION_PNG, MEDIATION_GRAPHML)
-    print(f"Wrote mediation DAG:    {MEDIATION_PNG}")
-    print(f"Wrote mediation GraphML:{MEDIATION_GRAPHML}")
+    render_mediation_dag(MEDIATION_PNG, MEDIATION_GRAPHML, MEDIATION_SVG)
+    print(f"Wrote mediation DAG (PNG):{MEDIATION_PNG}")
+    print(f"Wrote mediation DAG (SVG):{MEDIATION_SVG}")
+    print(f"Wrote mediation GraphML:  {MEDIATION_GRAPHML}")
 
 
 if __name__ == "__main__":
