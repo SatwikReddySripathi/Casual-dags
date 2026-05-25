@@ -47,6 +47,14 @@ python src/sensitivity/run_analysis.py
 
 Produces a curve showing how classifier error rate propagates into causal-estimate bias — directly addresses the reviewer's deeper concern about classifier error propagation.
 
+## Run bandit-inference / winner's-curse demo (V1.6)
+
+```bash
+python src/bandit/run_analysis.py
+```
+
+Two demos: (1) winner's-curse selection bias for K identical Bernoulli arms (addresses the reviewer's "premature convergence on false best arm" worry) with bootstrap-based debiasing; (2) IPW vs naive arm-mean estimators under increasingly concentrated allocation.
+
 ## Compute interrater reliability when a second rater exists (V1.5)
 
 ```bash
@@ -80,6 +88,12 @@ Generated files appear in `outputs/`:
 - `sensitivity_curve.png`
 - `sensitivity_predictions.csv`
 - `sensitivity_report.md`
+
+**Bandit inference (V1.6)**
+- `bandit_winners_curse.png`
+- `bandit_ipw_vs_naive.png`
+- `bandit_inference_table.csv`
+- `bandit_inference_report.md`
 
 **Interrater (V1.5, produced when rater-2 data exists)**
 - `interrater_report.md`
